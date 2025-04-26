@@ -8,7 +8,6 @@ import se.project.grpc.CurrencyConverterGrpc;
 import se.project.grpc.GetAvailableCurrenciesRequest;
 import se.project.grpc.GetAvailableCurrenciesResponse;
 
-import javax.xml.transform.TransformerFactoryConfigurationError;
 import java.util.ArrayList;
 import java.util.List;
 
