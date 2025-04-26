@@ -3,9 +3,9 @@ from decimal import Decimal
 from enum import Enum
 from typing import Optional
 
-from external_dependencies.pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-from currencies_model import Currency
+from package.models.currencies_model import Currency
 
 class BookingStatus(str, Enum):
     PLANNED = "PLANNED"
