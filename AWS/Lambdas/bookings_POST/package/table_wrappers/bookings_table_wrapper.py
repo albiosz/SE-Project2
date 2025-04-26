@@ -6,8 +6,8 @@ import logging
 
 from boto3.dynamodb.conditions import Key, Attr
 
-from models.pydantic.booking import Booking
-from exceptions.bookings import BookingOverlapException, BookingNotFoundException
+from ..models.bookings_model import Booking
+from ..exceptions.bookings_exceptions import BookingOverlapException, BookingNotFoundException
 
 # Set up our logger
 logging.basicConfig(level=logging.INFO)
