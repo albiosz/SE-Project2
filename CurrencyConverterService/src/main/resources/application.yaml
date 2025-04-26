@@ -1,0 +1,7 @@
+spring.application.name: currency_converter
+spring:
+  grpc:
+    server:
+      port: 8081
+      enable-reflection: true
+
