@@ -12,7 +12,7 @@ def main():
     proto_file = os.path.join(root_dir, 'CurrencyConverterService', 'src', 'main', 'proto', 'currency_converter.proto')
     
     # Output directory for generated code
-    output_dir = os.path.join(root_dir, 'backend', 'python_client')
+    output_dir = os.path.join(root_dir, 'backend', 'python_client', 'generated_client')
     
     # Ensure the proto file exists
     if not os.path.exists(proto_file):

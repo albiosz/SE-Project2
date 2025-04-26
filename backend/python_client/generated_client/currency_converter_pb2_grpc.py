@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import currency_converter_pb2 as currency__converter__pb2
+from . import currency_converter_pb2 as currency__converter__pb2
 
 GRPC_GENERATED_VERSION = '1.71.0'
 GRPC_VERSION = grpc.__version__
