@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option java_package = "se.project.grpc";
+option java_multiple_files = true;
+option java_outer_classname = "CurrencyConverterProto";
+
+
+package currency_converter;
+
+service CurrencyConverter {
+  rpc Convert (ConvertRequest) returns (ConvertResponse) {}
+  rpc GetAvailableCurrencies (GetAvailableCurrenciesRequest) returns (GetAvailableCurrenciesResponse) {}
+}
+
+message ConvertRequest {
+  string from_currency = 1;
+  string to_currency = 2;
+  int64 amount = 3;
+}
+
+message ConvertResponse {
+  int64 amount = 1;
+}
+
+message GetAvailableCurrenciesRequest {}
+
+message GetAvailableCurrenciesResponse {
+  repeated string currencies = 1;
+}
