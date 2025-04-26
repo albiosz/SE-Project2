@@ -5,7 +5,7 @@ from typing import Optional
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-from models.currencies import Currency
+from currencies_model import Currency
 
 
 class BookingStatus(str, Enum):
