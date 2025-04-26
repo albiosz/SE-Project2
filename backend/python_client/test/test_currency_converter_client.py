@@ -5,13 +5,13 @@ import os
 # Add the parent directory to the path so we can import the modules
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# try:
-from currency_converter_client import CurrencyConverterClient
-# except ImportError:
-#     pytest.skip("Generated gRPC modules not found. Run generate_proto.py first.", allow_module_level=True)
+try:
+    from currency_converter_client import CurrencyConverterClient
+except ImportError:
+    pytest.skip("Generated gRPC modules not found. Run generate_proto.py first.", allow_module_level=True)
 
 # Skip tests if server is not running
-def is_server_running(host="localhost", port=8081):
+def is_server_running(host="18.185.102.46", port=8081):
     """Check if the gRPC server is running by attempting to open a socket connection"""
     import socket
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -31,7 +31,7 @@ pytestmark = pytest.mark.skipif(
 @pytest.fixture
 def client():
     """Create a client and close it after the test"""
-    client = CurrencyConverterClient()
+    client = CurrencyConverterClient("18.185.102.46", 8081)
     yield client
     client.close()
 
