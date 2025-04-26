@@ -3,14 +3,14 @@
 import boto3
 import json
 
-from models.bookings_model import Booking, BookingCreate, BookingStatus
-from table_wrappers.bookings_table_wrapper import BookingsTable
+from package.models.bookings_model import Booking, BookingCreate, BookingStatus
+from package.table_wrappers.bookings_table_wrapper import BookingsTable
 
-from exceptions.bookings_exceptions import *
+from package.exceptions.bookings_exceptions import *
 
-from external_dependencies.fastapi import status, HTTPException
+from fastapi import status, HTTPException
 
-from service.bookings_implementation import calculate_booking_duration
+from package.service.bookings_implementation import calculate_booking_duration
 
 
 def lambda_handler(event, context):
