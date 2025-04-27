@@ -9,7 +9,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
-from package.exceptions.bookings_exceptions import ServiceUnavailableException
+from AWS.Lambdas.bookings_GET_all.package.exceptions.bookings_exceptions import ServiceUnavailableException
 
 class BookingTableWrapper:
     def __init__(self):

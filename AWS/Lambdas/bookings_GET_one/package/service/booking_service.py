@@ -8,6 +8,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
 from package.booking_table_wrapper.booking_table_wrapper import BookingTableWrapper
+from package.exceptions.bookings_exceptions import ServiceUnavailableException
+
 
 def get_all_bookings():
     try:
