@@ -10,7 +10,7 @@ from cars_table_wrapper.cars_table_wrapper import *
 class CarService:
     def __init__(self):
         try:
-            self.car_table_wrapper = CarTableWrapper()
+            self.car_table_wrapper = CarsTableWrapper()
         except Exception as e:
             logger.error(e)
 
