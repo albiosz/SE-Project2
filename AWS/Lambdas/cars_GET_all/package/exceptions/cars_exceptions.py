@@ -4,7 +4,7 @@ class CarNotFoundException(Exception):
         self.message = f"Car with ID {car_id} not found"
         super().__init__(self.message)
 
-class InvalidBookingIdException(Exception):
+class InvalidCarIdException(Exception):
     def __init__(self, car_id: int):
         self.message = "Invalid car ID: {}".format(car_id)
 

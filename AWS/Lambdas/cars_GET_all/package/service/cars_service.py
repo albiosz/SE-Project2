@@ -26,7 +26,7 @@ class CarService:
             return None
 
 
-    def get_booking_by_id(self, car_id: int = None):
+    def get_car_by_id(self, car_id: int = None):
         try:
             requested_items = self.car_table_wrapper.get_car(car_id)
             if len(requested_items) == 0:
