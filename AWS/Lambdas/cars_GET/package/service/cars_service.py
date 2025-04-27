@@ -1,40 +1,40 @@
 
-from exceptions.bookings_exceptions import *
+from exceptions.cars_exceptions import *
 
 import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
-from booking_table_wrapper.booking_table_wrapper import *
+from car_table_wrapper.car_table_wrapper import *
 
-class BookingService:
+class CarService:
     def __init__(self):
         try:
-            self.booking_table_wrapper = BookingTableWrapper()
+            self.car_table_wrapper = CarTableWrapper()
         except Exception as e:
             logger.error(e)
 
-    def get_all_bookings(self):
+    def get_all_cars(self):
         try:
-            bookings = self.booking_table_wrapper.get_all_bookings()
-            if len(bookings) == 0:
-                raise BookingNotFoundException()
+            items = self.car_table_wrapper.get_all_cars()
+            if len(items) == 0:
+                raise CarNotFoundException()
             else:
-                return bookings
+                return items
         except Exception as e:
             logger.error(e)
             return None
 
 
-    def get_booking_by_id(self, booking_id: int = None):
+    def get_booking_by_id(self, car_id: int = None):
         try:
-            requested_booking = self.booking_table_wrapper.get_booking(booking_id)
-            if len(requested_booking) == 0:
-                raise BookingNotFoundException(booking_id)
-            elif len(requested_booking) == 1:
-                return requested_booking[0]
+            requested_items = self.car_table_wrapper.get_car(car_id)
+            if len(requested_items) == 0:
+                raise CarNotFoundException(car_id)
+            elif len(requested_items) == 1:
+                return requested_items[0]
             else:
-                raise TooManyBookingsException(booking_id)
+                raise TooManyCarsException(car_id)
         except Exception as e:
             logger.error(e)
             raise e
