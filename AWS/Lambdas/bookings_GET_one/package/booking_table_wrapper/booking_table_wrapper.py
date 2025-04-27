@@ -2,6 +2,7 @@
 
 import boto3
 import botocore
+from boto3.dynamodb.conditions import Key
 
 from package.service.constants import SERVICE_NAME, RESOURCE_NAME, TABLE_NAME
 
@@ -9,12 +10,13 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
-from AWS.Lambdas.bookings_GET_all.package.exceptions.bookings_exceptions import ServiceUnavailableException
+from package.exceptions.bookings_exceptions import ServiceUnavailableException
 
 class BookingTableWrapper:
     def __init__(self):
         try:
-            self.table = boto3.resource(RESOURCE_NAME).Table(TABLE_NAME)
+            self.table = boto3.resource(RESOURCE_NAME, endpoint_url = "http://localhost:8000").Table(TABLE_NAME)
+            print("Table created successfully")
         except botocore.exceptions.ClientError as err:
             logger.error(
                 "Table %s is unavailable. %s: %s",
@@ -29,8 +31,10 @@ class BookingTableWrapper:
         if self.table is None:
             raise ServiceUnavailableException(TABLE_NAME)
 
-        query_result = []
         if booking_id is None:
-            return query_result.append(self.table.scan())
+            return self.table.scan().get("Items")
         else:
-            return query_result.extend(self.table.get_item(Key={"id": booking_id}))     # don't need consistent reads
+            return self.table.query(IndexName="get_booking_efficiently",
+                                    KeyConditionExpression=Key("id").eq(booking_id)).get("Items")    # don't need consistent reads
+
+
