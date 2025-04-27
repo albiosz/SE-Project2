@@ -5,7 +5,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
-from car_table_wrapper.car_table_wrapper import *
+from cars_table_wrapper.cars_table_wrapper import *
 
 class CarService:
     def __init__(self):
