@@ -1,5 +1,5 @@
-from backup.Lambda.src.package.service.booking_service import get_all_bookings
-from package.exceptions.bookings_exceptions import *
+from service.booking_service import get_all_bookings
+from exceptions.bookings_exceptions import *
 
 import logging
 logging.basicConfig(level=logging.INFO)

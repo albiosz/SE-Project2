@@ -4,7 +4,8 @@ import boto3
 import botocore
 from boto3.dynamodb.conditions import Key
 
-from package.service.constants import SERVICE_NAME, RESOURCE_NAME, TABLE_NAME
+from service.constants import SERVICE_NAME, RESOURCE_NAME, TABLE_NAME
+# from package.service.constants import SERVICE_NAME, RESOURCE_NAME, BOOKINGS_DB_ENDPOINT, TABLE_NAME       # local testing
 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -15,7 +16,9 @@ from package.exceptions.bookings_exceptions import ServiceUnavailableException
 class BookingTableWrapper:
     def __init__(self):
         try:
-            self.table = boto3.resource(RESOURCE_NAME, endpoint_url = "http://localhost:8000").Table(TABLE_NAME)
+            self.table = boto3.resource(RESOURCE_NAME).Table(TABLE_NAME)
+            # only for local testing
+            # self.table = boto3.resource(RESOURCE_NAME, endpoint_url = "http://localhost:8000").Table(TABLE_NAME)
             print("Table created successfully")
         except botocore.exceptions.ClientError as err:
             logger.error(
