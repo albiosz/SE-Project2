@@ -67,3 +67,7 @@ class BookingStartDateException(Exception):
 class ServiceUnavailableException(Exception):
     def __init__(self, service_name: str):
         self.message = "Service {} is unavailable".format(service_name)
+
+class InvalidBookingIdException(Exception):
+    def __init__(self, booking_id):
+        self.message = "Invalid booking ID: {}".format(booking_id)
