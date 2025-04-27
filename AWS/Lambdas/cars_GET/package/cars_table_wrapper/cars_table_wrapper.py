@@ -12,7 +12,7 @@ logger = logging.getLogger()
 
 from exceptions.bookings_exceptions import ServiceUnavailableException
 
-class BookingTableWrapper:
+class CarsTableWrapper:
     def __init__(self):
         try:
             # only when run locally
@@ -29,11 +29,11 @@ class BookingTableWrapper:
 
 
 # returns a list of results for conform results
-    def get_booking(self, booking_id: int = None):
+    def get_car(self, car_id: int = None):
         if self.table is None:
             raise ServiceUnavailableException(TABLE_NAME)
         return self.table.query(IndexName="id-index",
-                                KeyConditionExpression=Key("id").eq(booking_id)).get("Items")    # don't need consistent reads
+                                KeyConditionExpression=Key("id").eq(car_id)).get("Items")    # don't need consistent reads
 
-    def get_all_bookings(self):
+    def get_all_cars(self):
         return self.table.scan().get("Items")
