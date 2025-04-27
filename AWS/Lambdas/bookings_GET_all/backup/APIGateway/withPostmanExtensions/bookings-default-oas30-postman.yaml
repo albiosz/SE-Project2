@@ -2,7 +2,7 @@ openapi: "3.0.1"
 info:
   title: "bookings"
   description: "endpoint into booking service"
-  version: "2025-04-26T22:23:58Z"
+  version: "2025-04-27T06:16:36Z"
 servers:
 - url: "https://0g33mzzhqg.execute-api.eu-north-1.amazonaws.com/{basePath}"
   variables:
