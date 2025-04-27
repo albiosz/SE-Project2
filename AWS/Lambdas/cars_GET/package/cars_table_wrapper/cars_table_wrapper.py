@@ -10,7 +10,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
-from exceptions.bookings_exceptions import ServiceUnavailableException
+from exceptions.cars_exceptions import ServiceUnavailableException
 
 class CarsTableWrapper:
     def __init__(self):

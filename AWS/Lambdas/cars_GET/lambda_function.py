@@ -1,12 +1,12 @@
 # /api/v1/cars GET
-from exceptions.bookings_exceptions import InvalidBookingIdException
-from service.booking_service import BookingService
+from exceptions.cars_exceptions import InvalidCarIdException
+from service.cars_service import CarService
 
 def lambda_handler(event, context):
     booking_id = event.get('booking_id')
     if booking_id is None or not booking_id.isnumeric():
-        raise InvalidBookingIdException(booking_id)
+        raise InvalidCarIdException(booking_id)
     else:
-        return BookingService().get_booking_by_id(int(booking_id))
+        return CarService().get_booking_by_id(int(booking_id))
 
 
