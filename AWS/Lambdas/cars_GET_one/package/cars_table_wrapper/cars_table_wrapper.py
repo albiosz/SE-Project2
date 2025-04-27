@@ -32,8 +32,7 @@ class CarsTableWrapper:
     def get_car(self, car_id: int = None):
         if self.table is None:
             raise ServiceUnavailableException(TABLE_NAME)
-        return self.table.query(IndexName="id-index",
-                                KeyConditionExpression=Key("id").eq(car_id)).get("Items")    # don't need consistent reads
+        return self.table.query(KeyConditionExpression=Key("car_id").eq(car_id)).get("Items")    # don't need consistent reads
 
     def get_all_cars(self):
         return self.table.scan().get("Items")
