@@ -29,12 +29,11 @@ class BookingTableWrapper:
 
 
 # returns a list of results for conform results
-    def get_bookings(self, booking_id: int = None):
+    def get_booking(self, booking_id: int = None):
         if self.table is None:
             raise ServiceUnavailableException(TABLE_NAME)
+        return self.table.query(IndexName="id-index",
+                                KeyConditionExpression=Key("id").eq(booking_id)).get("Items")    # don't need consistent reads
 
-        if booking_id is None:
-            return self.table.scan().get("Items")
-        else:
-            return self.table.query(IndexName="id-index",
-                                    KeyConditionExpression=Key("id").eq(booking_id)).get("Items")    # don't need consistent reads
+    def get_all_bookings(self):
+        return self.table.scan().get("Items")

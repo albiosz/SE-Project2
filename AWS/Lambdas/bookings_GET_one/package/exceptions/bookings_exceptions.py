@@ -71,3 +71,7 @@ class ServiceUnavailableException(Exception):
 class InvalidBookingIdException(Exception):
     def __init__(self, booking_id):
         self.message = "Invalid booking ID: {}".format(booking_id)
+
+class TooManyResultsException(Exception):
+    def __init__(self, booking_id: int = None):
+        self.message = "Too many results for booking ID: {}".format(booking_id)
