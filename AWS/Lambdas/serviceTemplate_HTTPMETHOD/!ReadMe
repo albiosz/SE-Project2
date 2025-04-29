@@ -1,0 +1,26 @@
+20250426
+MM
+
+ - PURPOSE
+  . This is a template for the folder structure that is needed in order to im-
+    port your lambda function in AWS.
+  . In particular, this is needed when including packages (dependencies; inter-
+    nal and external) is needed.
+
+ - DETAILS
+  . The STRUCTURE of your package is IMPORTANT!
+
+root_directory_of_lambda        # SUGGESTION FOR NAMING: <path>_<HTTP-method>
+|- lambda_function.py           # this contains the 'lambda_handler.py'; NAMES IMPORTANT!
+|- package                      # let's keep 'package' as the entry point to dependencies
+   |- dependency1
+   |  |- file1.py
+   |  |- file2.py
+   |  ...
+   |- dependency2
+   |  |- file1.py
+   |  |- file2.py
+   |  ...
+
+ - USAGE
+  . https://docs.aws.amazon.com/lambda/latest/dg/python-package.html
